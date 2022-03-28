@@ -1,0 +1,273 @@
+*
+    box-sizing: border-box
+    font-family: var(--roboto)
+
+a
+    color: var(--color-secundario2)
+
+h1, h2, h3, h4, h5, h6
+    font-family: var(--stick-no-bills)
+    font-weight: 700
+
+html, body
+    height: 100%
+html, body, #root
+    font-weight: 300
+    margin: 0
+    padding: 0
+    width: 100%
+
+#root
+    display: grid
+    grid-template-rows: 60px auto 80px
+
+header, footer
+    align-items: center
+    background-color: var(--color-principal)
+    color: white
+    display: flex
+    justify-content: space-between
+    padding: 0 30px
+    width: 100%
+header
+    .container
+        display: flex
+        flex-wrap: wrap
+        position: relative
+    .nav-button
+        display: block
+        height: 19px
+        padding: 8px 0 0
+        position: absolute
+        left: 20px
+        width: 24px
+        span, span::before, span:after
+            background-color: white
+            border-radius: 2px
+            content: ""
+            display: block
+            height: 3px
+            position: absolute
+            width: 100%
+        span::before
+            top: -8px
+        span::after
+            bottom: -8px
+    h1
+        font-size: 24px
+        margin: 0
+        text-align: center
+        width: 100%
+        a
+            font-size: inherit
+            padding: 0
+            &::after
+                display: none
+        .material-icons
+            font-size: 1em
+            padding-bottom: 0.3em
+            vertical-align: middle
+    a
+        color: white
+        display: block
+        line-height: 1em
+        padding: 10px 20px
+        position: relative
+        text-align: center
+        text-decoration: none !important
+        vertical-align: middle
+        width: 100%
+        .material-icons
+            font-size: 1.4em
+        &.active::after
+            width: calc(100% - 40px)
+    nav
+        background-color: var(--color-principal2)
+        flex: auto
+        left: 0
+        max-height: 0
+        padding: 0
+        position: absolute
+        text-align: right
+        top: 60px
+        transition: max-height 300ms, padding 300ms
+        width: 100%
+        &.in
+            max-height: 100vh
+            padding: 40px 0
+    .cart
+        position: absolute
+        right: 0
+        width: auto
+        &:hover .cart-list
+            right: 0 !important
+        &:hover .cart-list:hover::before
+            background-color: #000000AA
+        .cart-items
+            align-items: center
+            background-color: var(--color-principal3)
+            border-radius: 50%
+            color: white
+            display: flex
+            font-family: var(--stick-no-bills)
+            font-size: 14px
+            font-weight: 800
+            height: 18px
+            justify-content: center
+            line-height: 1em
+            position: absolute
+            right: 12px
+            top: 2px
+            width: 18px
+        .cart-list
+            height: 100vh
+            max-width: 280px
+            padding: 30px
+            position: fixed
+            right: -280px
+            top: 0
+            transition: all 300ms
+            width: 280px
+            z-index: 999999
+            &::before, &::after
+                background-color: transparent
+                content: ""
+                height: 100vh
+                pointer-events: none
+                position: absolute
+                right: 0
+                top: 0
+                transition: all 300ms
+                width: calc(100vw + 280px)
+                z-index: 0
+            &::after
+                background-color: white
+                width: 100%
+                z-index: 1
+            & > *
+                color: var(--color-texto)
+                position: relative
+                z-index: 2
+            .item
+                border-bottom: 1px dashed var(--color-texto)
+                display: block
+                padding: 20px 30px 20px 0
+                position: relative
+                button
+                    align-items: center
+                    background: var(--color-principal2)
+                    border: none
+                    border-radius: 50%
+                    color: white
+                    cursor: pointer
+                    display: flex
+                    font-family: sans-serif
+                    height: 20px
+                    justify-content: center
+                    position: absolute
+                    right: 0
+                    top: calc(50% - 10px)
+                    width: 20px
+                span
+                    display: block
+                .price
+                    color: var(--color-secundario2)
+                    margin: 0
+            .button
+                color: white
+                margin-top: 20px
+                &::after
+                    display: none !important
+
+footer
+    font-size: 14px
+    justify-content: center
+    text-align: center
+
+.right
+    text-align: right
+.container
+    margin: auto
+    max-width: 1024px
+    width: 100%
+
+.button
+    background-color: var(--color-secundario2)
+    border: none
+    border-radius: 6px
+    bottom: 0
+    color: white
+    font-size: 16px
+    min-width: 120px
+    padding: 16px
+    text-decoration: none
+
+hr, h4
+    width: 100%
+
+@keyframes spin
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(359deg)
+.loading
+    align-items: center
+    display: flex
+    font-size: 22px
+    height: 100%
+    justify-content: center
+    width: 100%
+    span
+        animation: spin 1s linear 0s infinite
+
+@media (min-width: 768px)
+    header
+        .nav-button
+            display: none
+        h1
+            font-size: 20px
+            text-align: left
+            width: auto
+        a
+            display: inline-block
+            font-size: 14px
+            padding: 10px 8px
+            width: auto
+        nav
+            background-color: transparent
+            left: auto
+            max-height: none
+            padding: 0
+            position: relative
+            top: auto
+            width: auto
+        .cart
+            position: relative
+            right: auto
+            .cart-items
+                right: 0px
+
+@media (min-width: 1024px)
+    header
+        h1
+            font-size: 24px
+        a
+            font-size: 16px
+            padding: 10px 20px
+        .cart
+            .cart-items
+                right: 10px
+
+@media (hover: hover)
+    header
+        a::after
+            background-color: #D92958
+            bottom: 5px
+            content: ""
+            height: 2px
+            left: 20px
+            position: absolute
+            transition: all 300ms
+            width: 0
+        a:hover::after
+            width: calc(100% - 40px)
